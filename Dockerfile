@@ -1,8 +1,5 @@
-# Usamos la imagen oficial de Moodle, que es muy estable
-FROM moodle:latest
+FROM moodle:4.3-apache
 
-# Exponemos el puerto que Railway necesita
 EXPOSE 8080
 
-# Comando para iniciar Moodle
 CMD ["apache2-foreground"]
