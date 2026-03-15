@@ -5,6 +5,9 @@ RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libzip-dev libicu-dev libxml2-dev \
     && docker-php-ext-install gd zip intl mysqli opcache xml
 
+# SOLUCIÓN AL ERROR: Desactivamos el módulo conflictivo
+RUN a2dismod mpm_event && a2enmod mpm_prefork
+
 # Descargamos Moodle directamente
 ADD https://github.com/moodle/moodle/archive/refs/heads/MOODLE_403_STABLE.tar.gz /tmp/moodle.tar.gz
 RUN tar -xzf /tmp/moodle.tar.gz -C /var/www/html --strip-components=1 \
