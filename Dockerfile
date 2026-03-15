@@ -1,9 +1,5 @@
-# Usamos una imagen oficial de Moodle (ahorra mucho trabajo)
-FROM bitnami/moodle:4.3
+# Usamos la versión más reciente y compatible
+FROM bitnami/moodle:latest
 
-# Exponemos el puerto que usa Railway
+# Exponemos el puerto estándar
 EXPOSE 8080
-
-# Definimos variables básicas (luego las cambiaremos en el panel de Railway)
-ENV MOODLE_DATABASE_TYPE=mariadb
-ENV MOODLE_DATABASE_PORT_NUMBER=3306
