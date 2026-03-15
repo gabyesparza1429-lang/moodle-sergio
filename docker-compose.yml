@@ -1,16 +1,13 @@
-version: '3'
+version: '2'
 services:
   mariadb:
-    image: bitnami/mariadb:10.11
+    image: bitnami/mariadb:10.6
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=bn_moodle
       - MARIADB_DATABASE=bitnami_moodle
-    volumes:
-      - mariadb_data:/bitnami/mariadb
-
   moodle:
-    build: .
+    image: bitnami/moodle:4.1
     ports:
       - '8080:8080'
     environment:
@@ -18,11 +15,6 @@ services:
       - MOODLE_DATABASE_PORT_NUMBER=3306
       - MOODLE_DATABASE_USER=bn_moodle
       - MOODLE_DATABASE_NAME=bitnami_moodle
+      - ALLOW_EMPTY_PASSWORD=yes
     depends_on:
       - mariadb
-    volumes:
-      - moodle_data:/bitnami/moodle
-
-volumes:
-  mariadb_data:
-  moodle_data:
