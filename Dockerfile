@@ -1,5 +1,8 @@
-# Usamos la versión más reciente y compatible
-FROM bitnami/moodle:latest
+# Usamos la imagen oficial de Moodle, que es muy estable
+FROM moodle:latest
 
-# Exponemos el puerto estándar
+# Exponemos el puerto que Railway necesita
 EXPOSE 8080
+
+# Comando para iniciar Moodle
+CMD ["apache2-foreground"]
